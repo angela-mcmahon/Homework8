@@ -9,7 +9,20 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#remove warnings at END
 library(tidyverse)
 library(Lock5Data)
+library(knitr)
+data("StudentSurvey")
+```
+
+
+```{r}
+StudentSurvey%>%
+  select("Sex", "Weight", "Height") %>% 
+  mutate(BMI = 701*(Weight/(Height^2)))%>%
+  head(n=6)%>%
+  kable()
+  
 ```
 

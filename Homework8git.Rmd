@@ -4,12 +4,11 @@ author: "Angela McMahon"
 date: "3/25/2026"
 output: 
   html_document:
-  code_folding: hide
+   code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-#remove warnings at END
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 library(Lock5Data)
 library(knitr)

@@ -17,12 +17,54 @@ data("StudentSurvey")
 ```
 
 
+
+### Selecting Variables and Creating BMI Column  
 ```{r}
-StudentSurvey%>%
+Survey2 <-StudentSurvey%>%
   select("Sex", "Weight", "Height") %>% 
   mutate(BMI = 701*(Weight/(Height^2)))%>%
+  mutate(round(BMI,1))
+
+Survey2%>%
   head(n=6)%>%
   kable()
   
+```
+
+
+### Binning BMI Status 
+```{r}
+Survey3<-Survey2%>%
+  mutate(BMI_status = cut(BMI, c(-Inf, 18.5, 24.9, 29.9, Inf), labels= c("Underweight","Healthy Weight","Overweight","Obsese")))
+  
+Survey3%>%
+  head(n=6)%>%
+  kable()
+  
+  
+```
+
+
+### Highest and Lowest BMIs for Males and Females 
+```{r}
+Survey3%>%
+  group_by(Sex)%>%
+  summarize(max= max(BMI, na.rm=TRUE), min= min(BMI, na.rm=TRUE))%>% kable()
+```
+
+### 
+```{r}
+StudentSurvey%>%
+  mutate(HSAT=pmax(MathSAT, VerbalSAT, na.rm=TRUE), .keep="used")%>%
+  head(n=6)%>%
+  kable()
+```
+
+
+```{r}
+StudentSurvey%>%
+  mutate(zscore=abs(SAT-mean(SAT))/sd(SAT), .keep="used")%>%
+  head(n=6)%>%
+  kable()
 ```
 

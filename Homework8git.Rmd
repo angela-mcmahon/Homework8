@@ -32,8 +32,11 @@ Survey2%>%
   
 ```
 
+Using the original Student Survey data, created a new column for BMI and rounded to the nearest tenths place using mutate. Then selected the 4 columns to be displayed: Sex, Weight, Height, and BMI. This was stored under Survey2 and displayed in a table, specifically the first 6 rows of the new stored data.
+^[Question 1 completed.]
 
-### Binning BMI Status 
+
+### Binning BMI for Students Health Status 
 
 ```{r}
 Survey3<-Survey2%>%
@@ -45,6 +48,8 @@ Survey3%>%
   
 ```
 
+From the already modified Survey2 data, created another column by binning the students BMIs according to ranges and labeling accordingly. This newly modified data was stored as Survey3 and the first 6 rows are displayed in a table.
+^[Question 2 completed.]
 
 ### Highest and Lowest BMIs for Males and Females 
 
@@ -53,6 +58,9 @@ Survey3%>%
   group_by(Sex)%>%
   summarize(Max= max(BMI, na.rm=TRUE), Min= min(BMI, na.rm=TRUE))%>% kable()
 ```
+
+Using the Suvery3 data, grouped by Sex and found the maximum and minimum values for BMI for each sex. Displayed the values in a table.
+^[Question 3 completed.]
 
 ### New Column: The Greater of Student's Verbal and Math SAT Scores
 
@@ -63,6 +71,8 @@ StudentSurvey%>%
   kable()
 ```
 
+From the original Student Survey data, created a new column of each students greater SAT score between Verbal and Math. The columns used and the new column were displayed in a table of the first 6 rows.
+^[Question 4 completed.]
 
 ### New Column: Z-score for Students Total SAT Scores
 
@@ -73,3 +83,5 @@ StudentSurvey%>%
   kable()
 ```
 
+Using the original data set again, made a new column for the z-score of each students' total SAT score. Took the absolute values of the z-scores so they are easier to compare. Displayed the first 6 rows of the columns used and new column in a table.
+^[Question 5 completed.]
